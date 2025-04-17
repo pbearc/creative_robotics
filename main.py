@@ -49,10 +49,11 @@ def load_sounds():
     ]
     
     for i, file in enumerate(sound_files):
+        file_path = os.path.join("mp3", file)
         try:
-            if os.path.exists(file):
-                sounds.append(pygame.mixer.Sound(file))
-                print(f"Loaded sound {i}: {file}")
+            if os.path.exists(file_path):
+                sounds.append(pygame.mixer.Sound(file_path))
+                print(f"Loaded sound {i}: {file_path}")
             else:
                 beep_array = pygame.sndarray.array([4096 * pygame.math.Vector2(1, 0).rotate(x * 0.04 * (i + 1)).x for x in range(4096)])
                 default_sound = pygame.sndarray.make_sound(beep_array)
